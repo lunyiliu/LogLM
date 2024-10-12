@@ -41,9 +41,11 @@ Instruction Dataset of LogLM.json
 ```
 The statistics of the dataset is as follows:
 <p align="center">
-    <img src="asset/instruction dataset.png"  width=400 />
+    <img src="asset/instruction dataset.png"  width=500 />
 </p>
+
 ## 📝 Training LogLM
+
 LogLM in our paper is implemented by fine-tuning LLaMA-2-7B on our curated instruction dataset. Thanks [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) for implementing an efficient tool to fine-tune LLMs. The training steps of LogLM are as follows:
 
 
