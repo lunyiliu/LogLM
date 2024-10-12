@@ -1,7 +1,7 @@
 # LogLM
 
 <p align="center">
-    <img src="asset/LogLM.png" width=400 />
+    <img src="asset/LogLM.png" width=600 />
 </p>
 
 This repo contains training codes and the human-calibriated instruction dataset for LogLM, an LLM designed for instruction-based log analysis.
@@ -20,7 +20,7 @@ Automatic log analysis is essential for the efficient Operation and Maintenance 
 </p>
 
 <p align="center">
-    <img src="asset/case_study.png"  width=800 />
+    <img src="asset/case_study.png"  width=1000 />
 </p>
 
 ## 🔰 Installation
@@ -41,7 +41,7 @@ Instruction Dataset of LogLM.json
 ```
 The statistics of the dataset is as follows:
 <p align="center">
-    <img src="asset/instruction dataset.png"  width=800 />
+    <img src="asset/instruction dataset.png"  width=400 />
 </p>
 ## 📝 Training LogLM
 LogLM in our paper is implemented by fine-tuning LLaMA-2-7B on our curated instruction dataset. Thanks [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) for implementing an efficient tool to fine-tune LLMs. The training steps of LogLM are as follows:
