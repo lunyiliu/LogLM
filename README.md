@@ -6,7 +6,7 @@
 
 This repo contains training codes and the human-calibriated instruction dataset for LogLM, an LLM designed for instruction-based log analysis.
 
-Paper: TBD
+Paper: [LogLM: From Task-based to Instruction-based Automated Log Analysis](https://arxiv.org/abs/2410.09352)
 
 ## 📣 Introduction
 <p align="center">
