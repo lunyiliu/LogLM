@@ -29,6 +29,7 @@ $ pip install requirements.txt
 ```
 ## ✨ Instruction Dataset of LogLM
 We created an instruction dataset of 2632 pairs of instruction and response for training LogLM, an instruction-following LLM. The instruction dataset consists of five log analysis tasks and nine distinct log domains.
+**This dataset is in the main directory of this repo, named 'Instruction Dataset of LogLM.json'.**
 
 Example:
 ```
