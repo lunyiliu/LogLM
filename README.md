@@ -8,6 +8,9 @@ This repo contains training codes and the human-calibriated instruction dataset 
 
 Paper: [LogLM: From Task-based to Instruction-based Automated Log Analysis](https://arxiv.org/abs/2410.09352)
 
+## 📰 News
+LogLM has been accepted by International Conference on Software Engineering (ICSE) 2025 (SEIP track)🎉🎉🎉🎉🎉🎉.
+
 ## 📣 Introduction
 <p align="center">
     <img src="asset/illustration.png" width=800 />
