@@ -26,6 +26,36 @@ Automatic log analysis is essential for the efficient Operation and Maintenance 
     <img src="asset/case_study.png"  width=1000 />
 </p>
 
+## **🔬** Additional experimental results
+
+**TODO**
+
+### Log Parsing
+
+| **Model**                         | **HDFS**  | **Hd**    | **Zk**    | **BGL**   | **HPC**   | **Linux** | **Px**    | **Avg.**  |
+| --------------------------------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| **LogInstruct**                   | 0.998     | **0.973** | **0.995** | **0.977** | **0.935** | **0.934** | 0.940     | **0.965** |
+| **w/o IRS instructions**          | 0.999     | 0.968     | 0.918     | 0.953     | 0.928     | 0.928     | 0.925     | 0.946     |
+| **w/o Anomaly instructions**      | 0.999     | 0.914     | 0.936     | 0.909     | 0.927     | 0.932     | **0.944** | 0.937     |
+| **w/o multi-domain instructions** | **1.000** | 0.937     | 0.786     | 0.866     | 0.736     | 0.913     | 0.927     | 0.881     |
+| **LLaMA-7B**                      | 0.999     | 0.949     | 0.805     | 0.823     | 0.889     | 0.919     | 0.925     | 0.901     |
+
+### Anomaly Detection
+
+|             **Model**             |    BGL    |  Spirit   |   Avg.    |
+| :-------------------------------: | :-------: | :-------: | :-------: |
+|          **LogInstruct**          | **0.625** | **0.278** | **0.452** |
+|     **w/o IRS instructions**      |   0.509   |   0.240   |   0.375   |
+|   **w/o Parsing instructions**    |   0.133   |   0.154   |   0.144   |
+| **w/o multi-domain instructions** |   0.203   |   0.073   |   0.138   |
+|           **LLaMA-7B**            |   0.345   |   0.073   |   0.209   |
+
+|          **Task**           |        **BLEU**         |       **ROUGE-1**       |       **ROUGE-2**       |       **ROUGE-L**       |
+| :-------------------------: | :---------------------: | :---------------------: | :---------------------: | :---------------------: |
+|   **Log Interpretation**    | 15.584<br>(v.s. 15.505) | 46.488<br>(v.s. 46.022) | 23.087<br>(v.s. 23.025) | 34.769<br>(v.s. 35.471) |
+|   **Root Cause Analysis**   | 12.398<br>(v.s. 13.436) | 40.602<br>(v.s. 40.322) | 19.042<br>(v.s. 18.889) | 30.227<br>(v.s. 29.942) |
+| **Solution Recommendation** |  8.241<br>(v.s. 6.259)  | 34.415<br>(v.s. 30.870) | 13.911<br>(v.s. 11.622) | 25.431<br>(v.s. 23.463) |
+
 ## 🔰 Installation
 ```
 $ pip install requirements.txt
