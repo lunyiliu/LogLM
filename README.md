@@ -28,8 +28,6 @@ Automatic log analysis is essential for the efficient Operation and Maintenance 
 
 ## **🔬** Additional experimental results
 
-**TODO**
-
 ### Log Parsing
 
 In the task of log parsing, we employed the LLaMA-7B model and fine-tuned it using the manually annotated data provided by LogHub, tailored to the specific domain. Subsequently, we evaluated the model's performance comprehensively using the remaining log data as the test set. The experimental results demonstrate that LogLM exhibits superior performance compared to conventional large language models (LLMs) fine-tuned on the same domain data.
