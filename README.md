@@ -32,6 +32,8 @@ Automatic log analysis is essential for the efficient Operation and Maintenance 
 
 ### Log Parsing
 
+In the task of log parsing, we employed the LLaMA-7B model and fine-tuned it using the manually annotated data provided by LogHub, tailored to the specific domain. Subsequently, we evaluated the model's performance comprehensively using the remaining log data as the test set. The experimental results demonstrate that LogInstruct exhibits superior performance compared to conventional large language models (LLMs) fine-tuned on the same domain data.
+
 | **Model**                         | **HDFS**  | **Hd**    | **Zk**    | **BGL**   | **HPC**   | **Linux** | **Px**    | **Avg.**  |
 | --------------------------------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | **LogInstruct**                   | 0.998     | **0.973** | **0.995** | **0.977** | **0.935** | **0.934** | 0.940     | **0.965** |
@@ -42,6 +44,8 @@ Automatic log analysis is essential for the efficient Operation and Maintenance 
 
 ### Anomaly Detection
 
+In the task of log anomaly detection, we also compared the performance of LLaMA and LogInstruct using the aforementioned approach on the BGL and Spirit datasets. The results indicate that LogInstruct consistently outperforms LLaMA in detecting anomalies, demonstrating its robustness and superior capability in handling complex log data across different domains.
+
 |             **Model**             |    BGL    |  Spirit   |   Avg.    |
 | :-------------------------------: | :-------: | :-------: | :-------: |
 |          **LogInstruct**          | **0.625** | **0.278** | **0.452** |
@@ -50,11 +54,15 @@ Automatic log analysis is essential for the efficient Operation and Maintenance 
 | **w/o multi-domain instructions** |   0.203   |   0.073   |   0.138   |
 |           **LLaMA-7B**            |   0.345   |   0.073   |   0.209   |
 
+### Other Log Analysis Tasks
+
+In the tasks of log interpretation, root cause analysis, and solution recommendation, we also compared the performance of the fine-tuned LLaMA-7B with that of LogLM. In the table below, the scores outside the parentheses represent LogLM's performance, while the numbers inside the parentheses indicate the performance of LLaMA-7B. We found that LogLM demonstrated superior performance in the vast majority of tasks.
+
 |          **Task**           |        **BLEU**         |       **ROUGE-1**       |       **ROUGE-2**       |       **ROUGE-L**       |
 | :-------------------------: | :---------------------: | :---------------------: | :---------------------: | :---------------------: |
-|   **Log Interpretation**    | 15.584<br>(v.s. 15.505) | 46.488<br>(v.s. 46.022) | 23.087<br>(v.s. 23.025) | 34.769<br>(v.s. 35.471) |
-|   **Root Cause Analysis**   | 12.398<br>(v.s. 13.436) | 40.602<br>(v.s. 40.322) | 19.042<br>(v.s. 18.889) | 30.227<br>(v.s. 29.942) |
-| **Solution Recommendation** |  8.241<br>(v.s. 6.259)  | 34.415<br>(v.s. 30.870) | 13.911<br>(v.s. 11.622) | 25.431<br>(v.s. 23.463) |
+|   **Log Interpretation**    | **15.584**<br>(v.s. 15.505) | **46.488**<br>(v.s. 46.022) | **23.087**<br>(v.s. 23.025) | 34.769<br>(v.s. **35.471**) |
+|   **Root Cause Analysis**   | 12.398<br>(v.s. **13.436**) | **40.602**<br>(v.s. 40.322) | **19.042**<br>(v.s. 18.889) | **30.227**<br>(v.s. 29.942) |
+| **Solution Recommendation** |  **8.241**<br>(v.s. 6.259)  | **34.415**<br>(v.s. 30.870) | **13.911**<br>(v.s. 11.622) | **25.431**<br>(v.s. 23.463) |
 
 ## 🔰 Installation
 ```
