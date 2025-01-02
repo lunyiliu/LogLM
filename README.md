@@ -32,11 +32,11 @@ Automatic log analysis is essential for the efficient Operation and Maintenance 
 
 ### Log Parsing
 
-In the task of log parsing, we employed the LLaMA-7B model and fine-tuned it using the manually annotated data provided by LogHub, tailored to the specific domain. Subsequently, we evaluated the model's performance comprehensively using the remaining log data as the test set. The experimental results demonstrate that LogInstruct exhibits superior performance compared to conventional large language models (LLMs) fine-tuned on the same domain data.
+In the task of log parsing, we employed the LLaMA-7B model and fine-tuned it using the manually annotated data provided by LogHub, tailored to the specific domain. Subsequently, we evaluated the model's performance comprehensively using the remaining log data as the test set. The experimental results demonstrate that LogLM exhibits superior performance compared to conventional large language models (LLMs) fine-tuned on the same domain data.
 
 | **Model**                         | **HDFS**  | **Hd**    | **Zk**    | **BGL**   | **HPC**   | **Linux** | **Px**    | **Avg.**  |
 | --------------------------------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
-| **LogInstruct**                   | 0.998     | **0.973** | **0.995** | **0.977** | **0.935** | **0.934** | 0.940     | **0.965** |
+| **LogLM**                   | 0.998     | **0.973** | **0.995** | **0.977** | **0.935** | **0.934** | 0.940     | **0.965** |
 | **w/o IRS instructions**          | 0.999     | 0.968     | 0.918     | 0.953     | 0.928     | 0.928     | 0.925     | 0.946     |
 | **w/o Anomaly instructions**      | 0.999     | 0.914     | 0.936     | 0.909     | 0.927     | 0.932     | **0.944** | 0.937     |
 | **w/o multi-domain instructions** | **1.000** | 0.937     | 0.786     | 0.866     | 0.736     | 0.913     | 0.927     | 0.881     |
@@ -44,11 +44,11 @@ In the task of log parsing, we employed the LLaMA-7B model and fine-tuned it usi
 
 ### Anomaly Detection
 
-In the task of log anomaly detection, we also compared the performance of LLaMA and LogInstruct using the aforementioned approach on the BGL and Spirit datasets. The results indicate that LogInstruct consistently outperforms LLaMA in detecting anomalies, demonstrating its robustness and superior capability in handling complex log data across different domains.
+In the task of log anomaly detection, we also compared the performance of LLaMA-7B and LogLM using the aforementioned approach on the BGL and Spirit datasets. The results indicate that LogLM consistently outperforms LLaMA in detecting anomalies, demonstrating its robustness and superior capability in handling complex log data across different domains.
 
 |             **Model**             |    BGL    |  Spirit   |   Avg.    |
 | :-------------------------------: | :-------: | :-------: | :-------: |
-|          **LogInstruct**          | **0.625** | **0.278** | **0.452** |
+|          **LogLM**          | **0.625** | **0.278** | **0.452** |
 |     **w/o IRS instructions**      |   0.509   |   0.240   |   0.375   |
 |   **w/o Parsing instructions**    |   0.133   |   0.154   |   0.144   |
 | **w/o multi-domain instructions** |   0.203   |   0.073   |   0.138   |
