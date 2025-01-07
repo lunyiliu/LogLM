@@ -42,25 +42,39 @@ In the task of log parsing, we employed the LLaMA-7B model and fine-tuned it usi
 
 ### Anomaly Detection
 
-In the task of log anomaly detection, we also compared the performance of LLaMA-7B and LogLM using the aforementioned approach on the BGL and Spirit datasets. The results indicate that LogLM consistently outperforms LLaMA in detecting anomalies, demonstrating its robustness and superior capability in handling complex log data across different domains.
+In the task of log anomaly detection, we also compared the performance of LLaMA-7B and LogLM using the aforementioned approach on the BGL and Spirit datasets. Meanwhile, we also upsampled the training data of LLaMA-7B in a single domain to match that of LogLM and evaluated its performance. The results indicate that LogLM consistently outperforms LLaMA in detecting anomalies, demonstrating its robustness and superior capability in handling complex log data across different domains.
 
-|             **Model**             |    BGL    |  Spirit   |   Avg.    |
-| :-------------------------------: | :-------: | :-------: | :-------: |
-|          **LogLM**          | **0.625** | **0.278** | **0.452** |
-|     **w/o IRS instructions**      |   0.509   |   0.240   |   0.375   |
-|   **w/o Parsing instructions**    |   0.133   |   0.154   |   0.144   |
-| **w/o multi-domain instructions** |   0.203   |   0.073   |   0.138   |
-|           **LLaMA-7B**            |   0.345   |   0.073   |   0.209   |
+|   **Model**   |    BGL    |  Spirit   |   Avg.    |
+| :-----------: | :-------: | :-------: | :-------: |
+|   **LogLM**   | **0.625** | **0.278** | **0.452** |
+| **LLaMA-7B**  |   0.203   |   0.073   |   0.138   |
+| **Upsampled** |   0.345   |   0.073   |   0.209   |
 
 ### Other Log Analysis Tasks
 
 In the tasks of log interpretation, root cause analysis, and solution recommendation, we also compared the performance of the fine-tuned LLaMA-7B with that of LogLM. In the table below, the scores outside the parentheses represent LogLM's performance, while the numbers inside the parentheses indicate the performance of LLaMA-7B. We found that LogLM demonstrated superior performance in the vast majority of tasks.
 
-|          **Task**           |        **BLEU**         |       **ROUGE-1**       |       **ROUGE-2**       |       **ROUGE-L**       |
-| :-------------------------: | :---------------------: | :---------------------: | :---------------------: | :---------------------: |
-|   **Log Interpretation**    | **15.584**<br>(v.s. 15.505) | **46.488**<br>(v.s. 46.022) | **23.087**<br>(v.s. 23.025) | 34.769<br>(v.s. **35.471**) |
-|   **Root Cause Analysis**   | 12.398<br>(v.s. **13.436**) | **40.602**<br>(v.s. 40.322) | **19.042**<br>(v.s. 18.889) | **30.227**<br>(v.s. 29.942) |
-| **Solution Recommendation** |  **8.241**<br>(v.s. 6.259)  | **34.415**<br>(v.s. 30.870) | **13.911**<br>(v.s. 11.622) | **25.431**<br>(v.s. 23.463) |
+1. Log Interpretation Task
+| **Model**       | **BLEU** | **ROUGE-1** | **ROUGE-2** | **ROUGE-L** |
+|------------------|----------|-------------|-------------|-------------|
+| **LogLM**        | 15.584   | 46.488      | 23.087      | 34.769      |
+| **LLaMA-7B**     | 15.505   | 46.022      | 23.025      | **35.471**  |
+
+---
+
+2. Root Cause Analysis Task
+| **Model**       | **BLEU** | **ROUGE-1** | **ROUGE-2** | **ROUGE-L** |
+|------------------|----------|-------------|-------------|-------------|
+| **LogLM**        | 12.398   | 40.602      | 19.042      | 30.227      |
+| **LLaMA-7B**     | **13.436** | 40.322      | 18.889      | 29.942      |
+
+---
+
+3. Solution Recommendation Task
+| **Model**       | **BLEU** | **ROUGE-1** | **ROUGE-2** | **ROUGE-L** |
+|------------------|----------|-------------|-------------|-------------|
+| **LogLM**        | **8.241** | **34.415**  | **13.911**  | **25.431**  |
+| **LLaMA-7B**     | 6.259    | 30.870      | 11.622      | 23.463      |
 
 ## 🔰 Installation
 ```
