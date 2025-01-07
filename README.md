@@ -60,7 +60,7 @@ In the tasks of log interpretation, root cause analysis, and solution recommenda
 ### 1. Log Interpretation Task
 | **Model**       | **BLEU** | **ROUGE-1** | **ROUGE-2** | **ROUGE-L** |
 |------------------|----------|-------------|-------------|-------------|
-| **LogLM**        | 15.584   | 46.488      | 23.087      | 34.769      |
+| **LogLM**        | **15.584**   | **46.488**      | **23.087**      | 34.769      |
 | **LLaMA-7B**     | 15.505   | 46.022      | 23.025      | **35.471**  |
 
 ---
@@ -68,7 +68,7 @@ In the tasks of log interpretation, root cause analysis, and solution recommenda
 ### 2. Root Cause Analysis Task
 | **Model**       | **BLEU** | **ROUGE-1** | **ROUGE-2** | **ROUGE-L** |
 |------------------|----------|-------------|-------------|-------------|
-| **LogLM**        | 12.398   | 40.602      | 19.042      | 30.227      |
+| **LogLM**        | 12.398   | **40.602**      | **19.042**      | **30.227**      |
 | **LLaMA-7B**     | **13.436** | 40.322      | 18.889      | 29.942      |
 
 ---
