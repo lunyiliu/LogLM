@@ -54,7 +54,10 @@ In the task of log anomaly detection, we also compared the performance of LLaMA-
 
 In the tasks of log interpretation, root cause analysis, and solution recommendation, we also compared the performance of the fine-tuned LLaMA-7B with that of LogLM. In the table below, the scores outside the parentheses represent LogLM's performance, while the numbers inside the parentheses indicate the performance of LLaMA-7B. We found that LogLM demonstrated superior performance in the vast majority of tasks.
 
-1. Log Interpretation Task
+
+---
+
+### 1. Log Interpretation Task
 | **Model**       | **BLEU** | **ROUGE-1** | **ROUGE-2** | **ROUGE-L** |
 |------------------|----------|-------------|-------------|-------------|
 | **LogLM**        | 15.584   | 46.488      | 23.087      | 34.769      |
@@ -62,7 +65,7 @@ In the tasks of log interpretation, root cause analysis, and solution recommenda
 
 ---
 
-2. Root Cause Analysis Task
+### 2. Root Cause Analysis Task
 | **Model**       | **BLEU** | **ROUGE-1** | **ROUGE-2** | **ROUGE-L** |
 |------------------|----------|-------------|-------------|-------------|
 | **LogLM**        | 12.398   | 40.602      | 19.042      | 30.227      |
@@ -70,12 +73,13 @@ In the tasks of log interpretation, root cause analysis, and solution recommenda
 
 ---
 
-3. Solution Recommendation Task
+### 3. Solution Recommendation Task
 | **Model**       | **BLEU** | **ROUGE-1** | **ROUGE-2** | **ROUGE-L** |
 |------------------|----------|-------------|-------------|-------------|
 | **LogLM**        | **8.241** | **34.415**  | **13.911**  | **25.431**  |
 | **LLaMA-7B**     | 6.259    | 30.870      | 11.622      | 23.463      |
 
+---
 ## 🔰 Installation
 ```
 $ pip install requirements.txt
