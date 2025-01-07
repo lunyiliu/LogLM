@@ -26,60 +26,6 @@ Automatic log analysis is essential for the efficient Operation and Maintenance 
     <img src="asset/case_study.png"  width=1000 />
 </p>
 
-## **🔬** Additional experimental results
-
-### Log Parsing
-
-In the task of log parsing, we employed the LLaMA-7B model and fine-tuned it using the manually annotated data provided by LogHub, tailored to the specific domain. Subsequently, we evaluated the model's performance comprehensively using the remaining log data as the test set. The experimental results demonstrate that LogLM exhibits superior performance compared to conventional large language models (LLMs) fine-tuned on the same domain data.
-
-| **Model**                         | **HDFS**  | **Hd**    | **Zk**    | **BGL**   | **HPC**   | **Linux** | **Px**    | **Avg.**  |
-| --------------------------------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
-| **LogLM**                   | 0.998     | **0.973** | **0.995** | **0.977** | **0.935** | **0.934** | 0.940     | **0.965** |
-| **w/o IRS instructions**          | 0.999     | 0.968     | 0.918     | 0.953     | 0.928     | 0.928     | 0.925     | 0.946     |
-| **w/o Anomaly instructions**      | 0.999     | 0.914     | 0.936     | 0.909     | 0.927     | 0.932     | **0.944** | 0.937     |
-| **w/o multi-domain instructions** | **1.000** | 0.937     | 0.786     | 0.866     | 0.736     | 0.913     | 0.927     | 0.881     |
-| **LLaMA-7B**                      | 0.999     | 0.949     | 0.805     | 0.823     | 0.889     | 0.919     | 0.925     | 0.901     |
-
-### Anomaly Detection
-
-In the task of log anomaly detection, we also compared the performance of LLaMA-7B and LogLM using the aforementioned approach on the BGL and Spirit datasets. Meanwhile, we also upsampled the training data of LLaMA-7B in a single domain to match that of LogLM and evaluated its performance. The results indicate that LogLM consistently outperforms LLaMA in detecting anomalies, demonstrating its robustness and superior capability in handling complex log data across different domains.
-
-|   **Model**   |    BGL    |  Spirit   |   Avg.    |
-| :-----------: | :-------: | :-------: | :-------: |
-|   **LogLM**   | **0.625** | **0.278** | **0.452** |
-| **LLaMA-7B**  |   0.203   |   0.073   |   0.138   |
-| **Upsampled** |   0.345   |   0.073   |   0.209   |
-
-### Other Log Analysis Tasks
-
-In the tasks of log interpretation, root cause analysis, and solution recommendation, we also compared the performance of the fine-tuned LLaMA-7B with that of LogLM. In the table below, the scores outside the parentheses represent LogLM's performance, while the numbers inside the parentheses indicate the performance of LLaMA-7B. We found that LogLM demonstrated superior performance in the vast majority of tasks.
-
-
----
-
-### 1. Log Interpretation Task
-| **Model**       | **BLEU** | **ROUGE-1** | **ROUGE-2** | **ROUGE-L** |
-|------------------|----------|-------------|-------------|-------------|
-| **LogLM**        | **15.584**   | **46.488**      | **23.087**      | 34.769      |
-| **LLaMA-7B**     | 15.505   | 46.022      | 23.025      | **35.471**  |
-
----
-
-### 2. Root Cause Analysis Task
-| **Model**       | **BLEU** | **ROUGE-1** | **ROUGE-2** | **ROUGE-L** |
-|------------------|----------|-------------|-------------|-------------|
-| **LogLM**        | 12.398   | **40.602**      | **19.042**      | **30.227**      |
-| **LLaMA-7B**     | **13.436** | 40.322      | 18.889      | 29.942      |
-
----
-
-### 3. Solution Recommendation Task
-| **Model**       | **BLEU** | **ROUGE-1** | **ROUGE-2** | **ROUGE-L** |
-|------------------|----------|-------------|-------------|-------------|
-| **LogLM**        | **8.241** | **34.415**  | **13.911**  | **25.431**  |
-| **LLaMA-7B**     | 6.259    | 30.870      | 11.622      | 23.463      |
-
----
 ## 🔰 Installation
 ```
 $ pip install requirements.txt
@@ -178,3 +124,58 @@ python src/train_bash.py \
     --predict_with_generate
 ```
 For more information, please refer to LLaMA-Factory v0.3.2.
+
+## **🔬** Additional Experimental Results
+
+The following additional experimental results expand the ablation study in the paper, focusing on two aspect: (1) an ablation study on amount of instruction training data. (2) Comparison with "LLaMA-2-finetuned" on all five tasks, which is the backbone LLM fine-tuned on the same in-domain and in-task data as LogLM.
+
+### (1) Ablation on Amount of Training Data
+
+To disentagle whether the strong performance of LogLM is coming from the diversity of tasks in LogLM's training data or the amount of data itself (For example, it is possible that just seeing more logs is helping), we created an upsampled version of each single-task dataset with the equal size of the full LogLM instruction dataset (with 2632 entries). For example, the training dataset for Log Parsing in HDFS has 200 entries, and is cloned for around 13 times to form a upsampled version. We then train LogLM with the same setting on each of the upsampled dataset and compare the performance. Results are shown in the following tables:
+
+#### Log Parsing
+
+| **Model**                         | **HDFS**  | **Hadoop**    | **Zookeeper**    | **BGL**   | **HPC**   | **Linux** | **Proxifier**    | **Avg.**  |
+| --------------------------------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| **LogLM**                   | 0.998     | **0.973** | **0.995** | **0.977** | **0.935** | **0.934** | **0.940**     | **0.965** |
+| **LLaMA-2-7B-finetuned** | **1.000** | 0.937     | 0.786     | 0.866     | 0.736     | 0.913     | 0.927     | 0.881     |
+| **LLaMA-2-7B-finetuned (Upsampled)**                      | 0.999     | 0.949     | 0.805     | 0.823     | 0.889     | 0.919     | 0.925     | 0.901     |
+
+#### Anomaly Detection
+
+
+|             **Model**             |    BGL    |  Spirit   |   Avg.    |
+| -------------------------------| :-------: | :-------: | :-------: |
+|          **LogLM**          | **0.625** | **0.278** | **0.452** |
+| **LLaMA-2-7B-finetuned** |   0.203   |   0.073   |   0.138   |
+| **LLaMA-2-7B-finetuned (Upsampled)**           |   0.345   |   0.073   |   0.209   |
+
+In the table, **LLaMA-2-7B-finetuned** refers to the model fine-tuned from LLaMA-2 using only in-domain and in-task training data, and **LLaMA-2-7B-finetuned (Upsampled)** refers to the model trained using the upsampled version of in-domain data. Both the results for log parsing and anomaly detection indicate that, although increasing the amount of training data helps with the performance (Upsampled > Non-upsampled), it still falls behind LogLM, which is trained with an instruction dataset containing diverse tasks and domains.
+
+### (2) Comparison with LLaMA-2-7B-finetuned on All Five Log Analysis Tasks
+
+In the paper, we only displayed performance comparison between LogLM and LLaMA-2-7B-finetuned (the pink bar in Fig. 5 in the paper, training using only in-domain and in-task data) for two tasks: Log Parsing and Anomaly Detection. The rest of the five tasks are Log Interpretation, Root Cause Analysis and Solution Recommendation. And results on these tasks are as follows:
+
+
+#### Log Interpretation
+| **Model**       | **BLEU** | **ROUGE-1** | **ROUGE-2** | **ROUGE-L** |
+|------------------|----------|-------------|-------------|-------------|
+| **LogLM**        | **15.584**   | **46.488**      | **23.087**      | 34.769      |
+| **LLaMA-2-7B-finetuned**     | 15.505   | 46.022      | 23.025      | **35.471**  |
+
+
+#### Root Cause Analysis Task
+| **Model**       | **BLEU** | **ROUGE-1** | **ROUGE-2** | **ROUGE-L** |
+|------------------|----------|-------------|-------------|-------------|
+| **LogLM**        | 12.398   | **40.602**      | **19.042**      | **30.227**      |
+| **LLaMA-2-7B-finetuned**     | **13.436** | 40.322      | 18.889      | 29.942      |
+
+
+#### Solution Recommendation Task
+| **Model**       | **BLEU** | **ROUGE-1** | **ROUGE-2** | **ROUGE-L** |
+|------------------|----------|-------------|-------------|-------------|
+| **LogLM**        | **8.241** | **34.415**  | **13.911**  | **25.431**  |
+| **LLaMA-2-7B-finetuned**     | 6.259    | 30.870      | 11.622      | 23.463      |
+
+
+In general, we found that LogLM demonstrated superior performance against LLaMA-2-7B-finetuned in the vast majority of testing terms.
